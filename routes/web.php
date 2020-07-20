@@ -28,3 +28,17 @@ Route::get('/admin/login', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/user/logout', 'Auth\LoginController@logoutUser')->name('user.logout');
+
+Route::name('admin.')->group(function () {
+    Route::namespace('AuthAdmin')->group(function () {
+        Route::get('/admin/login', 'LoginController@showLoginForm')->name('login');
+        Route::post('/admin/login', 'LoginController@loginAdmin')->name('loginSubmit');
+        Route::post('/admin/logout', 'LoginController@logout')->name('logout');
+    });
+
+    Route::namespace('Admin')->group(function () {
+        Route::get('/admin', 'AdminController@index')->name('home');
+    });
+});

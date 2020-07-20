@@ -34,7 +34,7 @@
                             <div class="login-box">
                                 <a href="#" class="logo-name text-lg text-center">Dawet Project</a>
                                 <p class="text-center m-t-md">Please login into your account.</p>
-                                <form class="m-t-md" action="" method="POST">
+                                <form class="m-t-md" action="{{ route('admin.loginSubmit') }}" method="POST">
                                     @csrf
                                     <div class="form-group">
                                         <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email" autofocus>
